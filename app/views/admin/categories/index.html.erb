@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+
+    <div class="container-fluid">
+        <%= link_to 'Category', admin_categories_path, class: "btn btn-default" %>
+    </div>
+    <br><br>    
+    <div class="form-inline">
+      <%= form_for [:admin, @category] do |f| %>     
+          <%= f.text_field :name, class: "form-control" %>
+        <%= f.submit class: "btn btn-info" %>
+        <% if @category.errors.any? %>
+          <%= @category.errors.full_messages.to_sentence %>
+        <% end %>
+      <% end %>
+    </div> 
+    <br><br><br>
+    <table class="table table-hover table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">name</th>
+          <th colspan="col" >option</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @categories.each do |category| %>
+          <tr>
+            <td><%= category.name %></td>
+            <td><%= link_to 'Edit', admin_categories_path(id: category.id)  %>
+            <%= link_to 'Delete', admin_category_path(category), method: :delete, data: { confirm: "Are you sure?" }  %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
