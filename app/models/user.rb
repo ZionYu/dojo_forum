@@ -6,7 +6,7 @@ class User < ApplicationRecord
   has_many :posts 
   
   def admin?
-    self.role == "admin"
+    self.role == "Admin"
   end
   
 end
