@@ -11,11 +11,11 @@ puts "Default Admin have created"
 Category.destroy_all
 
 category_list = [
-  { name: "科技" },
+  { name: "文創" },
   { name: "商業" },
   { name: "運動" },
   { name: "心理" },
-  { name: "文創" }
+  { name: "科技" }
 ]
 
 category_list.each do |category|
