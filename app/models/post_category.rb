@@ -1,4 +1,4 @@
 class PostCategory < ApplicationRecord
-  belongs_to :post_id
-  belongs_to :category_id
+  belongs_to :post
+  belongs_to :category
 end

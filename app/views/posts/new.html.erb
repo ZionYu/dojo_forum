@@ -1,0 +1,57 @@
+<div class="container">
+  <%= form_for @post do |f| %>
+    <div class="form-group">
+      <%= f.text_field :title, placeholder: "title", class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.text_area :content, class: "form-control", size: "30x10" %>
+    </div>
+    <div class="form-group">
+      <%#= image_tag @post.image, width: "200px", if @post.image? %>
+      <%= f.file_field :image %>
+    </div>
+    <div class="form-group">
+      Who Can See : 
+      <div class="form-check form-check-inline">
+        <%= f.check_box :purview, class:"form-check-input" %>
+        <%= f.label :purview , "All", class:"form-check-label p-1" %>
+      </div>
+      <div class="form-check form-check-inline">
+        <%= f.check_box :purview, class:"form-check-input" %>
+        <%= f.label :purview , "Friend", class:"form-check-label p-1" %>
+      </div>
+      <div class="form-check form-check-inline">
+        <%= f.check_box :purview, class:"form-check-input" %>
+        <%= f.label :purview , "Myself", class:"form-check-label p-1" %>
+      </div>
+    </div>
+    <div class="form-group">
+      Category:
+      <div class="form-check form-check-inline">   
+        <%= f.collection_check_boxes :category_ids, Category.all, :id, :name, {}, { multiple: true,class: "form-check-input "}  do |c| %>
+          <%= c.check_box(class: "form-check-input") %> 
+          <div class="p-1"><%= c.object.name%></div>
+        <% end %>
+      </div>
+    </div>
+    <div class="form-group">
+      Status:    
+    </div>
+    <div class="form-group">
+      <%= f.submit "Save Draft", class: "btn btn"%>
+      <%= f.submit "Submit", class: "btn btn" %>
+    </div>
+  <% end %>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+        
