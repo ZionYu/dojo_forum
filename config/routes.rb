@@ -4,6 +4,11 @@ Rails.application.routes.draw do
   root "posts#index"
   resources :posts
   resources :categories, only: [:show]
+  resources :users, only: [:show, :edit, :update] do
+    member do
+      get :draft
+    end
+  end
 
   namespace :admin do
     root "categories#index"
