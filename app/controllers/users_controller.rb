@@ -25,7 +25,7 @@ class UsersController < ApplicationController
   end
 
   def draft
-    
+    @drafts = @user.posts.drafts
   end
 
   def reply
