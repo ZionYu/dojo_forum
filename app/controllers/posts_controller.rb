@@ -27,7 +27,7 @@ class PostsController < ApplicationController
       @post.status = "draft"
       if @post.save
         flash[:notice] = "Draft was saved"
-        redirect_to draft_user_path(@post)
+        redirect_to draft_user_path(@post.user)
       else
         flash.now[:alert] = "Draft was failed to save"
         render :new

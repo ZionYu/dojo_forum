@@ -1,15 +1,1 @@
-<div class="jumbotron jumbotron-fluid p-3">
-  <div class="container">
-    <div class="row">
-      <div class="col-6 col-md-4">
-        <%= image_tag @user.avatar, size: "240x240" if @user.avatar? %>
-      </div>
-      <div class="col-12 col-md-6">
-        <%= @user.introduction %>
-        <div class="col-12 col-md-12">
-          <%= link_to 'Edit', edit_user_path(@user), class: "btn btn-outline-success float-right" %>
-        </div>
-      </div>  
-    </div>
-  </div> 
-</div>
+<%= render partial: 'shared/profile' %>
