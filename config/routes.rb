@@ -6,7 +6,11 @@ Rails.application.routes.draw do
   resources :categories, only: [:show]
   resources :users, only: [:show, :edit, :update] do
     member do
+      get :post
+      get :reply
       get :draft
+      get :collect
+      get :friend
     end
   end
 
