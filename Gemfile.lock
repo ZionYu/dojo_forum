@@ -83,6 +83,7 @@ GEM
     execjs (2.7.0)
     ffaker (2.10.0)
     ffi (1.9.25)
+    fontawesome5-rails (5.2.0.0)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     i18n (1.1.1)
@@ -226,6 +227,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise
   ffaker
+  fontawesome5-rails
   jbuilder (~> 2.5)
   jquery-rails
   kaminari

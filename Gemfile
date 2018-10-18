@@ -35,6 +35,7 @@ gem 'bootstrap', '~> 4.1.3'
 gem 'jquery-rails'
 gem 'kaminari'
 gem 'carrierwave'
+gem 'fontawesome5-rails'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
