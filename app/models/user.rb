@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy 
 
   has_many :replies, dependent: :restrict_with_error
-  has_many :post_replies, through: :replies 
+  has_many :replied_posts, through: :replies, source: :post
 
   has_many :vieweds, dependent: :restrict_with_error
   has_many :viewed_posts, through: :vieweds, source: :post
