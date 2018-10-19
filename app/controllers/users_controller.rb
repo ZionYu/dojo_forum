@@ -29,7 +29,7 @@ class UsersController < ApplicationController
   end
 
   def reply
-    
+    @replies = @user.replies
   end
 
   def collect

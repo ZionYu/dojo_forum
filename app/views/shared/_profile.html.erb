@@ -15,20 +15,21 @@
     </div>
   </div> 
 </div>
+<br>
 <ul class="nav nav-tabs nav-fill">
   <li class="nav-item">
-    <%= link_to 'My Post', post_user_path(current_user), class: "nav-link text-success font-weight-bold" %>
+    <%= link_to 'My Post', post_user_path(current_user), class: "nav-link text-success font-weight-bold #{'active' if @published.present?}" %>
   </li>
   <li class="nav-item">
-    <%= link_to 'My Comment', reply_user_path(current_user), class: "nav-link text-success font-weight-bold" %>
+    <%= link_to 'My Comment', reply_user_path(current_user), class: "nav-link text-success font-weight-bold #{'active' if @replies.present?}" %>
   </li>
   <li class="nav-item">
-    <%= link_to 'My Collect', collect_user_path(current_user), class: "nav-link text-success font-weight-bold" %>
+    <%= link_to 'My Collect', collect_user_path(current_user), class: "nav-link text-success font-weight-bold #{'active' if @collects.present?}" %>
   </li>
   <li class="nav-item">
-    <%= link_to 'My Draft', draft_user_path(current_user), class: "nav-link text-success font-weight-bold" %>
+    <%= link_to 'My Draft', draft_user_path(current_user), class: "nav-link text-success font-weight-bold #{'active' if @drafts.present?}" %>
   </li>
   <li class="nav-item">
-    <%= link_to 'My friend', friend_user_path(current_user), class: "nav-link text-success font-weight-bold" %>  
+    <%= link_to 'My friend', friend_user_path(current_user), class: "nav-link text-success font-weight-bold #{'active' if @friends.present?}" %>  
   </li>
 </ul>
