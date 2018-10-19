@@ -1,0 +1,6 @@
+<%= form_for [@post, @reply], remote: true do |f| %>
+  <div class="form-group">
+    <%= f.text_area :comment, class:"rounded form-control", rows: "6", placeholder: "  add comment..." %>
+    <%= f.submit 'Update', class: "btn btn-outline-info float-right" %>
+  </div> 
+<% end %>

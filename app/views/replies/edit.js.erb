@@ -1,0 +1,3 @@
+<% html = j(render partial: 'replies/reply_form') %>
+var reply = $("#<%= @reply.id %>")
+$(reply).html("<%= html %>")

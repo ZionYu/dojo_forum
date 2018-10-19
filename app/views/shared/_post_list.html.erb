@@ -10,7 +10,7 @@
     </thead>
     <tbody>
       <% @posts.each do |post| %>  
-        <tr>
+        <tr data-link="<%=post_path(post)%>" >
           <td><%= post.replies_count %></td>
           <td><%= post.title %></td>
           <td><%= post.last_replied_at %></td>
@@ -20,4 +20,6 @@
     </tbody>
   </table>
 </div>
-
+<script>$("tr[data-link]").click(function() {
+  window.location = $(this).data("link")
+})</script>

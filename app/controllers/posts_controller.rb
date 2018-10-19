@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
+  before_action :set_post, only: [:show, :edit, :update] 
 
   def index
     @posts = Post.all
@@ -18,7 +19,7 @@ class PostsController < ApplicationController
       @post.status = "published"
       if @post.save
         flash[:notice] = "Post was published"
-        redirect_to posts_path(@post)
+        redirect_to post_path(@post)
       else
         flash.now[:alert] = "Post was failed to publish"
         render :new
@@ -35,13 +36,18 @@ class PostsController < ApplicationController
     end     
   end
 
+  def show
+    @post.user = current_user
+    @reply = Reply.new(user: current_user)
+    @replies = @post.replies.page(params[:page]).per(20)
+  end
+
   def edit
-    @post = Post.find(params[:id])
+    
   end
 
   def update
-    @post = Post.find(params[:id])
-    @post.updade(post_params)
+    @post.update(post_params)
     if @post.save
       redirect_to post_path(@post)
     else
@@ -56,6 +62,10 @@ class PostsController < ApplicationController
   end
 
   private
+
+  def set_post
+    @post = Post.find(params[:id])
+  end
 
   def post_params
     params.require(:post).permit(:title, :content, :image, :purview, :status,  category_ids: [])
