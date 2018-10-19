@@ -15,7 +15,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user = current_user
     if params[:commit] == "Submit"
-      @post.status = "publish"
+      @post.status = "published"
       if @post.save
         flash[:notice] = "Post was published"
         redirect_to posts_path(@post)
@@ -33,6 +33,26 @@ class PostsController < ApplicationController
         render :new
       end
     end     
+  end
+
+  def edit
+    @post = Post.find(params[:id])
+  end
+
+  def update
+    @post = Post.find(params[:id])
+    @post.updade(post_params)
+    if @post.save
+      redirect_to post_path(@post)
+    else
+      render :edit      
+    end
+  end
+
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to root_path
   end
 
   private

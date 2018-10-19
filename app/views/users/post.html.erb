@@ -1,1 +1,22 @@
 <%= render partial: 'shared/profile' %>
+<table class="table table-hover">
+  <tbody>
+    <% @published.each do |publish| %>
+      <tr>
+        <td><h5><%= publish.title %></h5></td>
+        <td class="text-capitalize"><h5><%= publish.status %></h5></td>
+        <td><h5><%= publish.created_at.to_date %></h5></td>
+        <td>
+          <%= link_to edit_post_path(publish) do %>
+            <h4 class="text-danger"><%= fas_icon 'fas fa-edit' %></h4> 
+          <% end %>
+        </td>
+        <td>
+          <%= link_to post_path(publish), method: :delete do %>
+            <h4 class="text-danger"><%= fas_icon 'fas fa-trash-alt' %></h4>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

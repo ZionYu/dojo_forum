@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   end
 
   def post
-    
+    @published = @user.posts.published
   end
 
   def draft

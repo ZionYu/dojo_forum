@@ -11,6 +11,11 @@ class Post < ApplicationRecord
 
   has_many :post_categories ,dependent: :destroy
   has_many :categories, through: :post_categories
+
+  def self.published
+    where(status: "published").all
+  end
+ 
   
   def self.drafts
     where(:status => "draft").all
