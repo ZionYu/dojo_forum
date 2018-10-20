@@ -6,6 +6,9 @@ class Post < ApplicationRecord
 
   has_many :replies, dependent: :destroy
   has_many :replied_users, through: :replies, source: :user
+
+  has_many :collects, dependent: :destroy
+  has_many :collected_users, through: :collects, source: :user
   
   has_many :vieweds, dependent: :destroy
   has_many :veiwed_users, through: :vieweds, source: :user
