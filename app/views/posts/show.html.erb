@@ -1,9 +1,11 @@
 <div class="jumbotron jumbotron-fluid pt-1 pb-5">
   <h4 class="nav-link float-left"><%= @post.title %></h4>
-    <div id="collect-<%= @post.id %>">
+    <div id="collect-<%= @post.id %>" class="float-right">
       <%= render partial: 'shared/collect', locals: { post: @post } %>
     </div>
-  <li class="nav-link float-right"><%= link_to 'Comment' %></li>
+    <li class="nav-link">
+      <a href="#gotoreply" class="float-right btn btn-outline-success">Comment</a>
+    </li>
 </div>
 <div class="container-fluid">
   <div class="row">
@@ -41,7 +43,7 @@
 </div>
 <br><br>
 <div class="container">
-  <div class="row justify-content-center">
+  <div id="gotoreply" class="row justify-content-center">
     <%= form_for [@post, @reply] do |f| %>
       <div class="form-group">
         <%= f.text_area :comment, class:"rounded", size: "114x10", placeholder: "  add comment..." %>

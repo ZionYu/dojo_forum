@@ -1,1 +1,18 @@
 <%= render partial: 'shared/profile' %>
+<table class="table table-hover text-center">
+  <tbody>
+    <% @collects.each do |collect| %>
+      <tr>
+        <td width="211px"><h5><%= collect.post.title %></h5></td>
+        <td width="251px"></td>
+        <td width="231px"></td>
+        <td width="216px">
+          <div id="collect-<%= collect.post.id %>">
+            <%= render partial: "shared/collect", locals: { post: collect.post } %>
+          </div>
+        </td>
+        <td width="222px"></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -33,7 +33,7 @@ class UsersController < ApplicationController
   end
 
   def collect
-    
+    @collects = @user.collects
   end
 
   def friend
