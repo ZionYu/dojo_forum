@@ -1,6 +1,8 @@
 <div class="jumbotron jumbotron-fluid pt-1 pb-5">
   <h4 class="nav-link float-left"><%= @post.title %></h4>
-  <li class="nav-link float-right"><%= link_to 'Collect' %></li>
+    <div id="collect-<%= @post.id %>">
+      <%= render partial: 'shared/collect', locals: { post: @post } %>
+    </div>
   <li class="nav-link float-right"><%= link_to 'Comment' %></li>
 </div>
 <div class="container-fluid">

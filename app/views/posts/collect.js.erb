@@ -1,0 +1,4 @@
+var collect = document.createElement("div");
+collect.id = "collect-<%= @post.id %>";
+collect.innerHTML = "<%= j render(partial: "shared/collect", locals: { post: @post }) %>";
+$("div#collect-<%= @post.id %>").html(collect);

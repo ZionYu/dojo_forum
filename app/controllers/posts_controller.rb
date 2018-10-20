@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
-  before_action :set_post, only: [:show, :edit, :update] 
+  before_action :set_post, only: [:show, :edit, :update, :collect, :uncollect] 
 
   def index
     @posts = Post.all
@@ -59,6 +59,15 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.destroy
     redirect_to root_path
+  end
+
+  def collect
+    Collect.create!(user: current_user, post: @post)
+  end
+
+  def uncollect
+    collects = Collect.where(user: current_user, post: @post)
+    collects.destroy_all  
   end
 
   private
