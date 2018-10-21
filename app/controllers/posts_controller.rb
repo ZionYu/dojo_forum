@@ -70,6 +70,14 @@ class PostsController < ApplicationController
     collects.destroy_all  
   end
 
+  def feeds
+    @users_count = User.count
+    @posts_count = Post.count
+    @replies_count = Reply.count
+    @users = User.order(replies_count: :desc).first(10)
+    @posts = Post.order(replies_count: :desc).first(10)
+  end
+
   private
 
   def set_post

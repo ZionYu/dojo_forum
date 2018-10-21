@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   root "posts#index"
   resources :posts do
     resources :replies, only: [:create, :edit, :update, :destroy]
+    collection do
+      get :feeds
+    end
     member do
       post :collect
       post :uncollect
