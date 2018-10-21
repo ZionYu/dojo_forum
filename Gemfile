@@ -36,6 +36,7 @@ gem 'jquery-rails'
 gem 'kaminari'
 gem 'carrierwave'
 gem 'fontawesome5-rails'
+gem 'ransack'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
