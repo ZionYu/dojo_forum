@@ -40,6 +40,7 @@ class PostsController < ApplicationController
     @user = @post.user
     @reply = Reply.new(user: current_user)
     @replies = @post.replies.page(params[:page]).per(20)
+    @post.pageviews
   end
 
   def edit
@@ -77,6 +78,7 @@ class PostsController < ApplicationController
     @users = User.order(replies_count: :desc).first(10)
     @posts = Post.order(replies_count: :desc).first(10)
   end
+  
 
   private
 

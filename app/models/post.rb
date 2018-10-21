@@ -30,4 +30,9 @@ class Post < ApplicationRecord
     self.collected_users.include?(user)
   end
 
+  def pageviews
+    self.viewed_count += 1
+    save!
+  end
+
 end
