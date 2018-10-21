@@ -3,8 +3,9 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :collect, :uncollect] 
 
   def index
-    @posts = Post.all
     @categories = Category.all
+    @ransack = Post.where(status: 'published').order(id: :desc).ransack(params[:q])
+    @posts = @ransack.result(distinct: true)
   end
 
   def new
