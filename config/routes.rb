@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       post :uncollect
     end
   end
+
   resources :categories, only: [:show]
   resources :users, only: [:show, :edit, :update] do
     member do
@@ -17,6 +18,9 @@ Rails.application.routes.draw do
       get :draft
       get :collect
       get :friend
+      post :friend_request
+      post :friend_accept
+      post :friend_ignore   
     end
   end
 
