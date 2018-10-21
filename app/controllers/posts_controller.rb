@@ -37,7 +37,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post.user = current_user
+    @user = @post.user
     @reply = Reply.new(user: current_user)
     @replies = @post.replies.page(params[:page]).per(20)
   end

@@ -1,0 +1,3 @@
+$("#request-<%= @friend_request.id %>").children(".btn").remove();
+var friend_user = $("#request-<%= @friend_request.id %>");
+$("#friend-list").append(friend_user);

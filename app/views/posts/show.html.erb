@@ -11,8 +11,17 @@
   <div class="row">
     <div class="col-md-3">
       <div class="row justify-content-center">
-        <%= image_tag @post.user.avatar, size: "180x120" if @post.user.avatar? %>
+        <div>
+          <%= link_to user_path(@post.user) do %>
+            <%= image_tag @user.avatar, size: "180x120" if @user.avatar? %>
+          <% end %>
+        </div>
+        
       </div>
+      <div class="row justify-content-center">
+        
+        <%= render partial: 'shared/add_friend'%> 
+      </div> 
     </div>
     <div class="col-12 col-md-7">
       <p><%= image_tag @post.image, size: "360x240" if @post.image?%></p>
@@ -32,8 +41,14 @@
     <% @post.replies.each do |reply| %>
       <div class="col-md-3">
         <div class="row justify-content-center">
-          <%= image_tag reply.user.avatar, size: "180x120" if reply.user.avatar? %>
+          <%= link_to user_path(@post.user) do %>
+            <%= image_tag reply.user.avatar, size: "180x120" if reply.user.avatar? %>
+          <% end %>
         </div>
+        <div class="row justify-content-center">
+          <% @user = reply.user %>
+          <%= render partial: 'shared/add_friend' %>
+        </div> 
       </div>
       <div id="<%= reply.id %>" class="col-12 col-md-7">
         <%= render partial: 'replies/reply', locals: { reply: reply }  %>

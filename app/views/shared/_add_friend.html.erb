@@ -1,0 +1,9 @@
+<% if @user != current_user && @user.friend?(current_user) == "none" %>
+  <span id="friend-btn-<%= @user.id %>">
+    <%= link_to "Add Friend", friend_request_user_path(@user), method: :post, class: "btn btn-dark btn-sm mb-1", remote: true %>
+  </span>
+<% elsif @user.friend?(current_user) == "friend" %>
+  <span class="badge badge-pill badge-success md-1">Friend</span>
+<% elsif @user.friend?(current_user) == "exist" %>
+  <button type="button" class="btn btn-secondary btn-sm mb-1" disabled>Add Friend</button>
+<% end %>

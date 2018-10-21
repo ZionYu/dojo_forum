@@ -1,1 +1,53 @@
 <%= render partial: 'shared/profile' %>
+  <div class="card">
+    <h5 class="card-header text-center">Waiting for response</h5>
+    <div class="card-body row">
+      <% @waiting_for_responses.each do |response| %>
+        <% if response.friend.id %>
+        <span class="card-text text-center p-1">
+          <%= link_to user_path(response.friend.id) do %>
+            <%= image_tag response.friend.avatar, width: '100px' %>
+            <h5 class="text-info"><%= response.friend.name %></h5>
+          <% end %>
+        </span>
+        <% end %>
+      <% end %>
+    </div>
+    <h5 class="card-header text-center">Friend Request</h5>
+    <div class="card-body row">
+      <% @requests.each do |request| %>
+      <span class="card-text text-center p-1" id="request-<%= request.id %>">
+        <%= link_to user_path(request.user) do %>
+          <%= image_tag request.user.avatar, width: '100px' %>
+          <h5 class="text-info"><%= request.user.name %></h5>
+        <% end %>
+        <% if current_user == @user %>
+          <%= link_to friend_accept_user_path(request.id), method: :post, class: "btn btn-sm", remote: true do %>
+          <h4><%= fa_icon "check-circle 2x" %></h4>
+          <% end %>
+          <%= link_to friend_ignore_user_path(request.id), method: :post, class: "btn btn-sm text-danger", remote: true do %>
+          <h4><%= fa_icon "times-circle 2x" %></h4>  
+          <% end %>
+        <% end %>
+      </span>
+      <% end %>
+    </div>
+
+    <h5 class="card-header text-center">Friend List</h5>
+    <div class="card-body row" id="friend-list">
+      <% @friendships.each do |friendship| %>
+        <% if @user != friendship.user %>
+          <% friend = friendship.user %>
+        <% else %>
+          <% friend = friendship.friend %>
+        <% end %>
+        <span class="card-text text-center p-1">
+          <%= link_to user_path(friend) do %>
+            <%= image_tag friend.avatar, width: '100px' %>
+            <h5 class="text-info"><%= friend.name %></h5>
+          <% end %>
+        </span>
+      <% end %>
+    </div>
+  </div>
+</div>
