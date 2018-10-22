@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   def index
     @categories = Category.all
     @ransack = Post.where(status: 'published').order(id: :desc).ransack(params[:q])
-    @posts = @ransack.result(distinct: true)
+    @posts = @ransack.result(distinct: true).page(params[:page]).per(10)
   end
 
   def new
