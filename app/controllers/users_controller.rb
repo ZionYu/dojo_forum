@@ -6,16 +6,19 @@ class UsersController < ApplicationController
   end
 
   def edit
-    unless @user = current_user
+    unless @user == current_user
       redirect_to user_path(@user)
     end
   end
 
   def update
     @user.update(user_params)
+    
     if @user.save
+      flash[:notice] = "Profile was successfully updated"
       redirect_to user_path(@user)
     else
+      flash.now[:alert] = "Profile was failed to update!"
       render :edit
     end
   end
@@ -26,10 +29,13 @@ class UsersController < ApplicationController
 
   def draft
     @drafts = @user.posts.drafts
+    unless @user == current_user
+      redirect_to user_path(@user)
+    end 
   end
 
   def reply
-    @replies = @user.replies
+    @replies = @user.replies.order(id: :desc)
   end
 
   def collect
