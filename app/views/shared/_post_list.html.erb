@@ -9,19 +9,22 @@
       </tr>
     </thead>
     <tbody>
-      <% @posts.each do |post| %>  
-        <tr data-link="<%=post_path(post)%>" class="text-center" >
-          <td><%= post.replies_count %></td>
-          <td><%= post.title %></td>
-          <td>
-          <% if post.replies_count != 0 %>
-            <%= post.replies.last.created_at.strftime("%Y-%m-%d") %>
-          <% end %>
-          </td>
-          <td><%= post.viewed_count %></td>
-        </tr>
-      <% end %>
-      
+      <% @posts.each do |post| %> 
+        <% if post.purview == "All" || current_user != nil &&
+        post.purview == "Friend" && current_user.friend?(post.user) == "friend" ||
+         post.user == current_user %> 
+          <tr data-link="<%=post_path(post)%>" class="text-center" >
+            <td><%= post.replies_count %></td>
+            <td><%= post.title %></td>
+            <td>
+            <% if post.replies_count != 0 %>
+              <%= post.replies.last.created_at.strftime("%Y-%m-%d") %>
+            <% end %>
+            </td>
+            <td><%= post.viewed_count %></td>
+          </tr>
+        <% end %>
+      <% end %>  
     </tbody>
   </table>
 </div>

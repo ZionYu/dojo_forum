@@ -3,12 +3,12 @@ class RepliesController < ApplicationController
   before_action :set_reply, only: [:edit, :update, :destroy]
 
   def create
+    purview_check(@post, current_user)
     @reply = @post.replies.build(reply_params)
     @reply.user = current_user
     @reply.save!
     redirect_to post_path(@post)
   end
-
 
   def update
     @reply.update_attributes(reply_params)
