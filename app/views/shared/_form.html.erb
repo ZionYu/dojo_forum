@@ -13,17 +13,18 @@
     <div class="form-group">
       Who Can See : 
       <div class="form-check form-check-inline">
-        <%= f.check_box :purview, class:"form-check-input" %>
-        <%= f.label :purview , "All", class:"form-check-label p-1" %>
+        <%= f.radio_button :purview, "All", :checked => true, class: "form-check-input" %>
+        <label class="form-check-label">All</label>
       </div>
       <div class="form-check form-check-inline">
-        <%= f.check_box :purview, class:"form-check-input" %>
-        <%= f.label :purview , "Friend", class:"form-check-label p-1" %>
+        <%= f.radio_button :purview, "Friend", class: "form-check-input" %>
+        <label class="form-check-label">Friend</label>
       </div>
       <div class="form-check form-check-inline">
-        <%= f.check_box :purview, class:"form-check-input" %>
-        <%= f.label :purview , "Myself", class:"form-check-label p-1" %>
-      </div>
+        <%= f.radio_button :purview, "Myself", class: "form-check-input"  %>
+        <label class="form-check-label">Myself</label>
+      </div> 
+      <br/>
     </div>
     <div class="form-group">
       Category:
