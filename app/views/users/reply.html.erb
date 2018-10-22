@@ -4,7 +4,7 @@
     <% @replies.each do |reply| %>
       <div class="col-12 col-md-7 offset-md-2">
         <h5 class="font-weight-bold p-1">
-          <%= reply.post.title %>
+          <%= link_to reply.post.title, post_path(reply.post), class:"text-info" %>
         </h5>
         <div id="<%= reply.id %>">
           <div class="card">
@@ -16,7 +16,7 @@
             <%= link_to post_reply_path(reply.post, reply), method: :delete, data: { confirm: "Are you sure?" } do %>
               <h3 class="text-danger float-right p-1"><%= fas_icon 'fas fa-trash-alt' %></h3>
             <% end %>
-            <%= link_to edit_post_reply_path(reply.post, reply),remote: true do %>
+            <%= link_to edit_post_reply_path(reply.post, reply), remote: true do %>
               <h3 class="text-dark float-right  p-1"><%= fas_icon 'fas fa-edit' %></h3>
             <% end %>
           <% end %>
