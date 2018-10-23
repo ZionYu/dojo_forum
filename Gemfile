@@ -37,6 +37,7 @@ gem 'kaminari'
 gem 'carrierwave'
 gem 'fontawesome5-rails'
 gem 'ransack'
+gem 'rest-client'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
