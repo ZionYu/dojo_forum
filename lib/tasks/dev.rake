@@ -1,7 +1,7 @@
 namespace :dev do
 
   task fake_user: :environment do
-    User.destroy_all
+    
       
     url = "https://uinames.com/api/?ext&region=england"
 
@@ -21,45 +21,25 @@ namespace :dev do
   end
 
   task fake_post: :environment do
-    Post.destroy_all
+    
 
     User.all.each do |user|
       5.times do |i|
-        purview = ["All", "Friend", "Myself"]
         user.posts.create!(
           title:FFaker::Book.genre,
           content: FFaker::Lorem.sentence(50),
           status: "published",
-          purview: purview.sample,
-          viewed_count: rand(1..50)
+          purview: "All",
+          viewed_count: rand(1..50),
+          category_ids: Category.all.sample.id
         )
-      end
-    end
-
-    Post.all.each do |post|
-      rand(1..3).times do |i|
-        PostCategory.create!(category: Category.all.sample, post: post)
       end
     end
     puts "have created #{Post.count} fake posts"
   end
 
-  task fake_friend: :environment do
-    Friendship.destroy_all
-
-    User.all.each do |user|
-      10.times do |i|
-        user.friendships.create!(
-          friend: User.all.where.not(id: user)[i],
-          status: 'pending'
-          )
-      end
-    end
-    puts "have created #{Friendship.count} fake friends"
-  end
-
   task fake_reply: :environment do
-    Reply.destroy_all
+    
 
     User.all.each do |user|
       rand(10..20).times do |post|
@@ -75,7 +55,7 @@ namespace :dev do
   end
 
   task fake_collect: :environment do
-    Collect.destroy_all
+    
 
     User.all.each do |user|
       3.times do |post|
@@ -86,10 +66,27 @@ namespace :dev do
     puts "have created #{Collect.count} fake collects"
   end
 
+  task fake: :environment do
+    
+
+    User.all.each do |user|
+      10.times do |i|
+        status =["draft","published"]
+        user.posts.create!(
+          title:FFaker::Book.genre,
+          content: FFaker::Lorem.sentence(50),
+          status: "published",
+          purview: "All",
+          viewed_count: rand(1..50),
+          category_ids: Category.all.sample.id
+        )
+      end
+    end
+  end
+
   task fake_all: :environment do
     Rake::Task['dev:fake_user'].execute
     Rake::Task['dev:fake_post'].execute
-    Rake::Task['dev:fake_friend'].execute
     Rake::Task['dev:fake_reply'].execute
     Rake::Task['dev:fake_collect'].execute
   end
