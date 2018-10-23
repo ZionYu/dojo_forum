@@ -33,6 +33,6 @@
     <%= link_to 'My Draft', draft_user_path(@user), class: "nav-link text-success font-weight-bold #{'active' if @drafts.present?}" %>
   </li>
   <li class="nav-item">
-    <%= link_to 'My friend', friend_user_path(@user), class: "nav-link text-success font-weight-bold #{'active' if @friends.present?}" %>  
+    <%= link_to 'My friend', friend_user_path(@user), class: "nav-link text-success font-weight-bold #{'active' if @friendships.present?}" %>  
   </li>
 </ul>
