@@ -1,4 +1,5 @@
 class Api::V1::PostsController < ApiController
+  before_action :authenticate_user!, except: :index
   before_action :set_post, only: [:show, :update, :destroy]
   before_action :verify_identidy, only: [:update, :destroy]
 
