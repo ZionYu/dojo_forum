@@ -2,7 +2,7 @@ class Post < ApplicationRecord
 
   mount_uploader :image, ImageUploader
 
-  belongs_to :user
+  belongs_to :user, optional: true
 
   has_many :replies, dependent: :destroy
   has_many :replied_users, through: :replies, source: :user
