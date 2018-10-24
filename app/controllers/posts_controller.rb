@@ -54,12 +54,23 @@ class PostsController < ApplicationController
   end
 
   def update
-    if @post.update(post_params)
-      flash[:notice] = "Post was successfully updated"
-      redirect_to post_path(@post)
-    else
-      flash.now[:alert] = "Post was failed to update!"
-      render :edit      
+    if params[:commit] == "Submit"
+      @post.status = 'published'
+      if @post.update(post_params)
+        flash[:notice] = "post was successfully updated"      
+        redirect_to post_path(@post)
+      else
+        flash.now[:alert] = "post was failed to update"
+        render :edit
+      end
+    elsif params[:commit] == "Save Draft"
+      if @post.update(post_params)
+        flash[:notice] = "draft was successfully updated"      
+        redirect_to draft_user_path(@post.user)
+      else
+        flash.now[:alert] = "draft was failed to update"
+        render :edit
+      end
     end
   end
 
