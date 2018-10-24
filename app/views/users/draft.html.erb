@@ -3,7 +3,7 @@
   <tbody>
     <% @drafts.each do |draft| %>
       <tr  class="text-center" >
-        <td><h5><%= link_to draft.title, post_path(draft), class:"text-dark" %></h5></td>
+        <td><h5><%= link_to draft.title, post_path(draft), class:"text-info" %></h5></td>
         <td class="text-capitalize"><h5><%= draft.status %></h5></td>
         <td><h5><%= draft.created_at.to_date %></h5></td>
         <td>
