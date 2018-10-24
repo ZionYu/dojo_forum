@@ -1,6 +1,9 @@
-<div class="jumbotron jumbotron-fluid p-3">
+<div class="jumbotron jumbotron-fluid mb-0 p-3">
+  <% if current_user %>
+    <p class="float-right">你的 API Token：<code><%= current_user.authentication_token  %></code></p>
+  <% end %>
   <div class="container">
-    <h1 class="display-5">Story Place</h1>
+    <h1 class="display-5">Story Place</h1> 
     <p class="lead">Story of Your Life</p>
     <div class="container">
       <div class="row">    
