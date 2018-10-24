@@ -1,4 +1,4 @@
-<div class="jumbotron jumbotron-fluid pt-1 pb-5">
+<div class="jumbotron jumbotron-fluid position-relative pt-1 pb-5">
   <h4 class="nav-link float-left"><%= @post.title %></h4>
     <div id="collect-<%= @post.id %>" class="float-right">
       <%= render partial: 'shared/collect', locals: { post: @post } %>
@@ -55,7 +55,7 @@
           <% end %>
         </div>
         <h5 class="w-100 text-center">
-          <%= link_to @user.name, user_path(@user), class: "text-info" %>
+          <%= link_to reply.user.name, user_path(reply.user), class: "text-info" %>
         </h5>
         <div class="row justify-content-center">
           <% @user = reply.user %>
@@ -63,6 +63,7 @@
         </div> 
       </div>
       <div id="<%= reply.id %>" class="col-12 col-md-7">
+        <% @user = reply.user %>
         <%= render partial: 'replies/reply', locals: { reply: reply }  %>
       </div>
     <% end %>

@@ -2,24 +2,23 @@
 <table class="table table-hover">
   <tbody>
     <% @drafts.each do |draft| %>
-      <tr data-link="<%= post_path(draft) %>" class="text-center" >
-        <td><h5><%= draft.title %></h5></td>
+      <tr  class="text-center" >
+        <td><h5><%= link_to draft.title, post_path(draft), class:"text-dark" %></h5></td>
         <td class="text-capitalize"><h5><%= draft.status %></h5></td>
         <td><h5><%= draft.created_at.to_date %></h5></td>
         <td>
+        <% if draft.user == current_user %>
           <%= link_to edit_post_path(draft) do %>
-            <h4 class="text-danger"><%= fas_icon 'fas fa-edit' %></h4> 
-          <% end %>
+          <h4 class="text-danger"><%= fas_icon 'fas fa-edit' %></h4> 
+        <% end %>
         </td>
         <td>
           <%= link_to post_path(draft), method: :delete, data: { confirm: "Are you sure?" } do %>
             <h4 class="text-danger"><%= fas_icon 'fas fa-trash-alt' %></h4>
           <% end %>
         </td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
-<script>$("tr[data-link]").click(function() {
-  window.location = $(this).data("link")
-})</script>

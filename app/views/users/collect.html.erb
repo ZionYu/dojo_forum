@@ -16,6 +16,10 @@
     <% end %>
   </tbody>
 </table>
-<script>$("tr[data-link]").click(function() {
-  window.location = $(this).data("link")
-})</script>
+<script>
+  $("tr[data-link]").click(function(event) {
+    if (!$(event.target).is('a')){
+      window.location = $(this).data("link")
+    };
+  });
+</script>

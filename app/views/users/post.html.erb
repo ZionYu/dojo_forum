@@ -2,11 +2,12 @@
 <table class="table table-hover">
   <tbody>
     <% @published.each do |publish| %>
-      <tr data-link="<%= post_path(publish) %>" class="text-center" >
-        <td><h5><%= publish.title %></h5></td>
+      <tr class="text-center">
+        <td><h5><%= link_to publish.title, post_path(publish), class:"text-dark" %></h5></td>
         <td class="text-capitalize"><h5><%= publish.status %></h5></td>
         <td><h5><%= publish.created_at.to_date %></h5></td>
         <td>
+        <% if publish.user == current_user %>
           <%= link_to edit_post_path(publish) do %>
             <h4 class="text-danger"><%= fas_icon 'fas fa-edit' %></h4> 
           <% end %>
@@ -16,10 +17,11 @@
             <h4 class="text-danger"><%= fas_icon 'fas fa-trash-alt' %></h4>
           <% end %>
         </td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
-<script>$("tr[data-link]").click(function() {
+<script>$("td[data-link]").click(function() {
   window.location = $(this).data("link")
 })</script>
