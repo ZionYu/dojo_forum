@@ -72,7 +72,7 @@ class Api::V1::PostsController < ApiController
   end
 
   def verify_identidy
-    unless @post.user == current_user
+    unless @post.user == current_user || current_user.admin?
       render json: {
         errors: "Not allow"
       }
