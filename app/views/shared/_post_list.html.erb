@@ -20,8 +20,8 @@
             <% if post.replies_count != 0 %>
               <%= post.replies.last.created_at.strftime("%Y-%m-%d") %>
             <% end %>
-            </td>
-            <td><%= post.viewed_count %></td>
+            </td>       
+            <td><span class="mr-3 text-right"><%= fas_icon('fas fa-eye') %></span><%= post.viewed_count %></td>
           </tr>
         <% end %>
       <% end %>  
