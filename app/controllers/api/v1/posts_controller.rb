@@ -6,9 +6,9 @@ class Api::V1::PostsController < ApiController
   def index
     if params[:category_id]
       @category = Category.find(params[:category_id])
-      @posts = @category.posts.published(current_user)
+      @posts = @category.posts.published
     else
-      @posts = Post.published(current_user)
+      @posts = Post.published
     end
     render json: { 
       data: @posts
