@@ -36,6 +36,7 @@ gem 'carrierwave'
 gem 'fontawesome5-rails'
 gem 'ransack'
 gem 'rest-client'
+gem 'webpacker'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
