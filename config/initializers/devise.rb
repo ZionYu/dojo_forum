@@ -234,7 +234,7 @@ Devise.setup do |config|
   # Configure the default scope given to Warden. By default it's the first
   # devise role declared in your routes (usually :user).
   # config.default_scope = :user
-
+  config.secret_key = 'ac961a4f8f16b401164745537258353abcdda34c009c7da82082191528059f2aba246d835a2f918f56379b411a3bc8c70fb1e4d76a831606cb03f604d14c8c69'
   # Set this configuration to false if you want /users/sign_out to sign out
   # only the current scope. By default, Devise signs out all scopes.
   # config.sign_out_all_scopes = true
