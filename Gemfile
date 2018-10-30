@@ -36,7 +36,7 @@ gem 'carrierwave'
 gem 'fontawesome5-rails'
 gem 'ransack'
 gem 'rest-client'
-gem 'therubyracer'
+gem 'mini_racer'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
