@@ -37,6 +37,7 @@ gem 'fontawesome5-rails'
 gem 'ransack'
 gem 'rest-client'
 gem 'webpacker'
+gem 'therubyracer'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
